@@ -4,7 +4,9 @@
   "description": "Agents to generate in a Excel phrases like stoic and religious using LangGraph.",
   "main": "index.ts",
   "scripts": {
-    "test": "test"
+    "build": "tsc",
+    "dev": "ts-node index.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,9 @@
   "homepage": "https://github.com/LucasHimelfarb/virtue#readme",
   "dependencies": {
     "dotenv": "^17.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
