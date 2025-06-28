@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/LucasHimelfarb/virtue/issues"
   },
-  "homepage": "https://github.com/LucasHimelfarb/virtue#readme"
+  "homepage": "https://github.com/LucasHimelfarb/virtue#readme",
+  "dependencies": {
+    "dotenv": "^17.0.0"
+  }
 }
