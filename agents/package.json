@@ -1,0 +1,23 @@
+{
+  "name": "agents",
+  "version": "0.0.1",
+  "description": "Agents to generate in a Excel phrases like stoic and religious using LangGraph.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasHimelfarb/virtue.git"
+  },
+  "keywords": [
+    "agents",
+    "virtue"
+  ],
+  "author": "Lucas Emanuel Himelfarb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucasHimelfarb/virtue/issues"
+  },
+  "homepage": "https://github.com/LucasHimelfarb/virtue#readme"
+}
