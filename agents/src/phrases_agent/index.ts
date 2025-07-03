@@ -1,9 +1,16 @@
+import type { Options } from './index.types'
+
 import { ChatOpenAI } from '@langchain/openai'
 import { createReactAgent } from '@langchain/langgraph/prebuilt'
 
 import 'dotenv/config'
 
-export default async () => {
+export default async ({
+  length = 10,
+  format = 'json',
+  languages = ['english'],
+  topic = 'Stoic philosophy',
+}: Options) => {
   console.log('--> Starting phrases agent <--')
 
   const llm = new ChatOpenAI({
@@ -12,8 +19,10 @@ export default async () => {
   })
 
   const prompt = `
-  You are an agent that generates phrases for a social media post. Expert in Stoic philosophy.
-  You will generate ten phrases that are related to Stoic philosophy.
+  # who you are?
+  You are a Master of ${topic}.
+  # what is your duty?
+  Helping people to generate phrases that are related to ${topic}.
   `
 
   const agent = createReactAgent({
@@ -25,9 +34,12 @@ export default async () => {
   const result = await agent.invoke({
     messages: [
       {
+        content: `
+        - Generate ${length} phrases about ${topic}.
+        - The phrases should be in ${languages.join(', ')}.
+        - Your response should be formatted in ${format}.
+        `,
         role: 'user',
-        content:
-          'Generate a phrase for a social media post about Stoic philosophy',
       },
     ],
   })
