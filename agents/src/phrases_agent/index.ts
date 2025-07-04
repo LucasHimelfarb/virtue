@@ -35,14 +35,14 @@ export default async ({
   }
 
   const llm = new ChatOpenAI({
-    temperature: 0.5,
+    temperature: 0.9,
   })
 
   const prompt = `
     # who you are?
     You are a Master of ${topic}.
     # what is your duty?
-    Helping people to generate phrases that are related to ${topic}.
+    Help people to heal and get ancestral knowledge with short phrases about ${topic}.
   `
 
   const agent = createReactAgent({
@@ -51,11 +51,13 @@ export default async ({
     tools: [],
   })
 
+  // TODO: add this to first message - Generate a excel file with the phrases where the columns are: language, phrase, author.
   return await agent.invoke({
     messages: [
       {
         content: `
           - Generate ${length} phrases about ${topic}.
+          - Always specify the author of the phrase.
           - The phrases should be in ${languages.join(', ')}.
           `,
         role: 'user',
