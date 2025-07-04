@@ -5,21 +5,23 @@ import phrasesAgent from './src/phrases_agent'
 const invokePhrasesAgent = async () => {
   const languages: Language[] = ['english', 'spanish']
 
-  const phrasesAgentOptions: Options = {
+  const options: Options = {
     languages,
     length: 10,
     format: 'json',
-    topic: 'Stoic philosophy',
+    topic: 'Christian philosophy',
   }
 
-  const phrasesAgentResponse = await phrasesAgent(phrasesAgentOptions)
-  const phrases = phrasesAgentResponse.messages[1].content
+  const response = await phrasesAgent(options)
+  const phrases = response.messages[1].content
 
   console.log(phrases)
 }
 
 const main = async () => {
+  console.log('--> Starting phrases agent <--')
   await invokePhrasesAgent()
+  console.log('--> Phrases agent finished <--')
 }
 
 main()

@@ -11,18 +11,15 @@ export default async ({
   languages = ['english'],
   topic = 'Stoic philosophy',
 }: Options) => {
-  console.log('--> Starting phrases agent <--')
-
   const llm = new ChatOpenAI({
     temperature: 0.5,
-    apiKey: process.env.OPENAI_API_KEY,
   })
 
   const prompt = `
-  # who you are?
-  You are a Master of ${topic}.
-  # what is your duty?
-  Helping people to generate phrases that are related to ${topic}.
+    # who you are?
+    You are a Master of ${topic}.
+    # what is your duty?
+    Helping people to generate phrases that are related to ${topic}.
   `
 
   const agent = createReactAgent({
@@ -31,20 +28,16 @@ export default async ({
     tools: [],
   })
 
-  const result = await agent.invoke({
+  return await agent.invoke({
     messages: [
       {
         content: `
-        - Generate ${length} phrases about ${topic}.
-        - The phrases should be in ${languages.join(', ')}.
-        - Your response should be formatted in ${format}.
-        `,
+          - Generate ${length} phrases about ${topic}.
+          - The phrases should be in ${languages.join(', ')}.
+          - Your response should be formatted in ${format}.
+          `,
         role: 'user',
       },
     ],
   })
-
-  console.log('--> Phrases agent finished <--')
-
-  return result
 }
