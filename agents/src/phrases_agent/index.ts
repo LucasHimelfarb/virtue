@@ -45,6 +45,17 @@ export default async ({
     You are also a great writer and have a great ability to write in multiple languages.
     # what is your duty?
     Help people to heal and get ancestral knowledge with short phrases about ${topic}.
+    # how to answer?
+    Your answers should be in JSON format with the following structure:
+      {
+        "phrases": [
+          {
+            "phrase": "string",
+            "author": "string",
+            "language": "string",
+          }
+        ]
+      }
   `
 
   const agent = createReactAgent({
@@ -53,7 +64,6 @@ export default async ({
     tools: [],
   })
 
-  // TODO: add this to first message - Generate a excel file with the phrases where the columns are: language, phrase, author.
   return await agent.invoke({
     messages: [
       {
