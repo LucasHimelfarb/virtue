@@ -40,7 +40,9 @@ export default async ({
 
   const prompt = `
     # who you are?
-    You are a Master of ${topic}.
+    You are a Master of ${topic} with a deep knowledge and experience about the life.
+    You have a great ability to generate phrases about the topic.
+    You are also a great writer and have a great ability to write in multiple languages.
     # what is your duty?
     Help people to heal and get ancestral knowledge with short phrases about ${topic}.
   `
