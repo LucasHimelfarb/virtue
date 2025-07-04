@@ -8,7 +8,6 @@ const invokePhrasesAgent = async () => {
   const options: Options = {
     languages,
     length: 10,
-    format: 'json',
     topic: 'Christian philosophy',
   }
 
