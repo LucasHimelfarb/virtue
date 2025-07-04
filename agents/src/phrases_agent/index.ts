@@ -1,3 +1,10 @@
+/**
+ * @fileoverview Generates phrases about a given topic in multiple languages using an LLM agent.
+ * @module phrases_agent
+ * @author Lucas Himelfarb
+ * @created 2024-06-10
+ */
+
 import type { Options } from './index.types'
 
 import { ChatOpenAI } from '@langchain/openai'
@@ -5,6 +12,16 @@ import { createReactAgent } from '@langchain/langgraph/prebuilt'
 
 import 'dotenv/config'
 
+/**
+ * Generates phrases about a specific topic in the requested languages.
+ *
+ * @param options - Configuration options for phrase generation.
+ * @param options.length - Number of phrases to generate (must be between 1 and 10).
+ * @param options.languages - Array of languages for the phrases (1 to 3 languages).
+ * @param options.topic - The topic for the generated phrases.
+ * @returns A promise that resolves with the generated phrases.
+ * @throws Error if the length or languages constraints are violated.
+ */
 export default async ({
   length = 10,
   languages = ['english'],
