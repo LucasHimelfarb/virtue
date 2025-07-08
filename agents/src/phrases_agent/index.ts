@@ -2,7 +2,7 @@
  * @fileoverview Generates phrases about a given topic in multiple languages using an LLM agent.
  * @module phrases_agent
  * @author Lucas Himelfarb
- * @created 2024-06-10
+ * @created 2025-06-04
  */
 
 import type { Options } from './index.types'
