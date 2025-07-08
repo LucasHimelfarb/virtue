@@ -7,6 +7,7 @@
 
 import type { Options } from './index.types'
 
+import { z } from 'zod'
 import { ChatOpenAI } from '@langchain/openai'
 import { createReactAgent } from '@langchain/langgraph/prebuilt'
 
@@ -45,23 +46,17 @@ export default async ({
     You are also a great writer and have a great ability to write in multiple languages.
     # what is your duty?
     Help people to heal and get ancestral knowledge with short phrases about ${topic}.
-    # how to answer?
-    Your answers should be in JSON format with the following structure:
-      {
-        "phrases": [
-          {
-            "phrase": "string",
-            "author": "string",
-            "language": "string",
-          }
-        ]
-      }
   `
 
   const agent = createReactAgent({
     llm,
     prompt,
     tools: [],
+    responseFormat: z.object({
+      phrases: z.string(),
+      language: z.string(),
+      author: z.string().optional(),
+    }),
   })
 
   return await agent.invoke({
