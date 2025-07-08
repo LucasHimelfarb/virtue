@@ -1,5 +1,5 @@
 /**
- * @fileoverview Generates phrases about a given topic in multiple languages using an LLM agent.
+ * @fileoverview Generate phrases about a given topic in multiple languages using an LLM agent.
  * @module phrases_agent
  * @author Lucas Himelfarb
  * @created 2025-06-04
