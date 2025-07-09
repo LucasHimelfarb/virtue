@@ -5,9 +5,8 @@
  * @created 2025-06-04
  */
 
-import type { Options } from './index.types'
+import { type Options, responseFormat } from './index.types'
 
-import { z } from 'zod'
 import { ChatOpenAI } from '@langchain/openai'
 import { createReactAgent } from '@langchain/langgraph/prebuilt'
 
@@ -52,11 +51,7 @@ export default async ({
     llm,
     prompt,
     tools: [],
-    responseFormat: z.object({
-      phrases: z.string(),
-      language: z.string(),
-      author: z.string().optional(),
-    }),
+    responseFormat,
   })
 
   return await agent.invoke({
