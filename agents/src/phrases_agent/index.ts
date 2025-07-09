@@ -1,8 +1,8 @@
 /**
- * @fileoverview Generate phrases about a given topic in multiple languages using an LLM agent.
+ * @created 2025-06-04
  * @module phrases_agent
  * @author Lucas Himelfarb
- * @created 2025-06-04
+ * @fileoverview Generate phrases about a given topic in multiple languages using an LLM agent.
  */
 
 import { type Options, responseFormat } from './index.types'
@@ -16,11 +16,11 @@ import 'dotenv/config'
  * Generates phrases about a specific topic in the requested languages.
  *
  * @param options - Configuration options for phrase generation.
- * @param options.length - Number of phrases to generate (must be between 1 and 10).
- * @param options.languages - Array of languages for the phrases (1 to 3 languages).
  * @param options.topic - The topic for the generated phrases.
- * @returns A promise that resolves with the generated phrases.
+ * @param options.languages - Array of languages for the phrases (1 to 3 languages).
+ * @param options.length - Number of phrases to generate (must be between 1 and 10).
  * @throws Error if the length or languages constraints are violated.
+ * @returns A promise that resolves with the generated phrases.
  */
 export default async ({
   length = 10,
