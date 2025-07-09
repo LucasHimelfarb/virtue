@@ -6,7 +6,6 @@ import { createReactAgent } from '@langchain/langgraph/prebuilt'
 
 import 'dotenv/config'
 
-// @ts-expect-error - NOTE: TS2589: Type instantiation is excessively deep and possibly infinite.
 const getWeather = tool(
   async (input: string) => {
     return `It's always sunny in ${input}!`
