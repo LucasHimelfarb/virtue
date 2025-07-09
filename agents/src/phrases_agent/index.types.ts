@@ -1,7 +1,8 @@
 import { z } from 'zod'
 
 export type Format = 'json' | 'markdown' | 'text'
-export type Language = 'portuguese' | 'spanish' | 'english'
+export const languageEnum = z.enum(['portuguese', 'spanish', 'english'])
+export type Language = z.infer<typeof languageEnum>
 
 export interface Options {
   topic: string
@@ -13,7 +14,7 @@ export const responseFormat = z.object({
   phrases: z.array(
     z.object({
       phrase: z.string().describe('The phrase itself'),
-      language: z.string().describe('The language of the phrase'),
+      language: languageEnum.describe('The language of the phrase'),
       author: z
         .string()
         .optional()
