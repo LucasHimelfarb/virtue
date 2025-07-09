@@ -1,8 +1,11 @@
-import type { Language, Options } from './src/phrases_agent/index.types'
-
+import type {
+  Options,
+  Phrases,
+  Language,
+} from './src/phrases_agent/index.types'
 import phrasesAgent from './src/phrases_agent'
 
-const invokePhrasesAgent = async () => {
+const invokePhrasesAgent = async (): Promise<Phrases> => {
   const languages: Language[] = ['english', 'spanish']
 
   const options: Options = {
@@ -11,15 +14,13 @@ const invokePhrasesAgent = async () => {
     topic: 'Christian philosophy',
   }
 
-  const response = await phrasesAgent(options)
-  const phrases = response.messages[1].content
-
-  console.log(phrases)
+  return (await phrasesAgent(options)).structuredResponse.phrases
 }
 
 const main = async () => {
   console.log('--> Starting phrases agent <--')
-  await invokePhrasesAgent()
+  const phrases = await invokePhrasesAgent()
+  console.log('response: ', phrases)
   console.log('--> Phrases agent finished <--')
 }
 
