@@ -4,6 +4,7 @@ import type {
   Language,
 } from './src/phrases_agent/index.types'
 import phrasesAgent from './src/phrases_agent'
+import mediaGeneratorAgent from './src/media_generator_agent'
 
 const invokePhrasesAgent = async (): Promise<Phrases> => {
   const languages: Language[] = ['english', 'spanish']
@@ -17,11 +18,22 @@ const invokePhrasesAgent = async (): Promise<Phrases> => {
   return (await phrasesAgent(options)).structuredResponse.phrases
 }
 
+const invokeMediaGeneratorAgent = async (phrases: Phrases) => {
+  const englishPhrases = phrases.filter(
+    ({ language }) => language === 'english'
+  )
+
+  return await mediaGeneratorAgent({ phrases: englishPhrases })
+}
+
 const main = async () => {
   console.log('--> Starting phrases agent <--')
   const phrases = await invokePhrasesAgent()
   console.log('response: ', phrases)
   console.log('--> Phrases agent finished <--')
+  console.log('--> Starting edition agent <--')
+  await invokeMediaGeneratorAgent(phrases)
+  console.log('--> Edition agent finished <--')
 }
 
 main()
