@@ -29,7 +29,10 @@ const invokeMediaGeneratorAgent = async (phrases: Phrases) => {
 const main = async () => {
   console.log('--> Starting phrases agent <--')
   const phrases = await invokePhrasesAgent()
-  console.log('response: ', phrases)
+  if (phrases.length === 0) {
+    console.log('No phrases found')
+    return
+  }
   console.log('--> Phrases agent finished <--')
   console.log('--> Starting edition agent <--')
   await invokeMediaGeneratorAgent(phrases)
